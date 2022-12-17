@@ -1,0 +1,3 @@
+---
+- name: Installing PHP.
+  apt: update_cache=yes name=php state=latest

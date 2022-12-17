@@ -1,0 +1,9 @@
+---
+- name: Install Apache, Git, PHP and Python on Ubuntu.
+  hosts: ubuntuservers
+  become: yes
+  roles:
+    - ubuntu-install-apache
+    - ubuntu-install-git
+    - ubuntu-install-php
+    - ubuntu-install-python
