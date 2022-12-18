@@ -2,6 +2,13 @@
 - name: Install Apache, Git, PHP and Python on Ubuntu.
   hosts: ubuntuservers
   become: yes
+
+  pre_tasks: 
+    name: Update apt cache if required.
+    apt:
+      update_cache: yes
+      cache_valid_time: 3600
+
   roles:
     - ubuntu-install-apache
     - ubuntu-install-git
