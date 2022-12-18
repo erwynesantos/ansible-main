@@ -4,7 +4,7 @@
   become: yes
 
   pre_tasks: 
-    name: Update apt cache if required.
+  - name: Update apt cache if required.
     apt:
       update_cache: yes
       cache_valid_time: 3600
