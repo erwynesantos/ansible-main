@@ -1,0 +1,10 @@
+---
+- hosts: all
+  tasks:
+  - name: create a text file in $HOME with the /bin/sh shell
+    shell: echo "Hello, World!" > $HOME/test_file.txt
+
+  - name: read all text files in $HOME with the /bin/bash shell
+    shell: cat < $HOME/*.txt
+    args:
+     executable: /bin/bash
