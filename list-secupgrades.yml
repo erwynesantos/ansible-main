@@ -1,0 +1,18 @@
+# Lists and outputs available security upgrades.
+# Warning: Not yet stable.
+
+---
+- hosts: all
+  tasks:
+  - name: Output to file available security upgrades.
+    #shell: grep security /etc/apt/sources.list > /tmp/"$(date +%F_%H-%M-%S)"-securityupgrade.list
+    shell: grep security /etc/apt/sources.list > /tmp/securityupgrade.list
+
+  - name: List the file.
+    shell: cat /tmp/securityupgrade.list
+    register: list
+
+  - debug: var=list.stdout_lines
+
+    #args:
+    #  executable: /bin/bash
