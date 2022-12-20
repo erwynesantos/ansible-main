@@ -1,0 +1,11 @@
+# Check for security updates Ubuntu
+- name: check if security updates are needed
+  hosts: localhost
+  tasks:
+    - name: apt-check
+      shell: "/usr/lib/update-notifier/apt-check 2>&1 | cut -d ';' -f 2"
+      changed_when: false
+      register: security_update
+
+    - debug: msg="Security update required"
+      when: security_update.stdout != "0"
