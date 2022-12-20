@@ -1,10 +1,10 @@
-# Check for security updates Ubuntu
-- name: Check if security updates are needed
-  tasks:
-    - name: apt-check
-      shell: "/usr/lib/update-notifier/apt-check 2>&1 | cut -d ';' -f 2"
-      changed_when: false
-      register: security_update
+# Check for security updates Ubuntu.
+# Not yet stable.
 
-    - debug: msg="Security update required"
-      when: security_update.stdout != "0"
+- name: Check if security updates are needed
+  shell: "/usr/lib/update-notifier/apt-check 2>&1 | cut -d ';' -f 2"
+  changed_when: false
+  register: security_update
+
+- debug: msg="Security update required"
+  when: security_update.stdout != "0"

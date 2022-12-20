@@ -1,13 +1,11 @@
----
-- name: Check if updates are available for Ubuntu.
-  hosts: all
-  become: yes
-
+# Check for security updates/upgrades on Ubuntu
+- hosts: all
+  become: true
   pre_tasks: 
-  - name: Update apt cache if required.
-    apt:
-      update_cache: yes
-      cache_valid_time: 3600
+   - name: Update apt cache if required.
+     apt:
+       update_cache: yes
+       cache_valid_time: 3600
 
   roles:
-   - ubuntu-securityupgradechecker
+    - ubuntu-securityupgradechecker
