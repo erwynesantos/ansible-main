@@ -12,14 +12,11 @@
   become: true
 
   pre_tasks: 
-  - name: Update apt cace if required.
-    apt:
-     update_cache: yes
-     cache_valid_time: 3600
   - name: Install prerequisites for Ansible to install .deb via apt module.
     apt: 
      name: 
       - xz-utils
+      
   - name: Install prerequisites for Adobe Reader.
     apt:
      name:
