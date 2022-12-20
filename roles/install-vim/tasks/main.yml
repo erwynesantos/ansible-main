@@ -1,0 +1,5 @@
+---
+- name: Install Vim.
+  package:
+   name: vim
+   state: latest
