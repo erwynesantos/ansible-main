@@ -1,0 +1,37 @@
+## git clone https://erwynesantos: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@github.com/erwynesantos/erwynesantos.com.git
+# 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
+---
+- name: Cloning Git Repo
+  hosts: ubuntuserver2
+  become: true
+
+  vars_files:
+    - vars/vault-pass.yml
+
+  vars:
+    git_url: https://erwynesantos:{{ github-token }}@github.com/erwynesantos/erwynesantos.com.git
+    git_repo: "git@github.com:erwynesantos/erwynesantos.com.git"
+    git_dest: "/var/www/erwynesantos.com/"
+    web_conf_src: "/var/www/erwynesantos.com/erwynesantos.com.conf"
+    ubuntu_web_conf: "/etc/apache2/sites-enabled/erwynesantos.com.conf"
+    centos_web_conf: "/etc/httpd/conf.d/erwynesantos.com.conf"
+    
+  tasks:
+    - name: Cloning {{ git_repo }}
+      git:
+       #repo: "{{ git_url }}"
+       repo: https://erwynesantos:{{ github_token }}@github.com/erwynesantos/erwynesantos.com.git
+       dest: "{{ git_dest }}"
+
+    - name: Copy web conf to respective Apache directory.
+      copy:
+        src: "{{ web_conf_src }}"
+        remote_src: yes
+        dest: "{{ ubuntu_web_conf }}" # Change this depending on your OS.
+      notify: Restart Apache
+
+  handlers:
+    - name: Restart Apache
+      service:
+        name: apache2 # Change to `httpd` for CentOS/RHEL, Change to `apache2` for Ubuntu/Debian
+        state: restarted
