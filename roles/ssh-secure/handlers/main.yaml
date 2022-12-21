@@ -1,0 +1,8 @@
+---
+- name: Restart SSH
+  service:
+    name: sshd
+    state: restarted
+- name: Print message
+  debug:
+    msg: Restarting sshd service on {{ inventory_hostname }} with IP Address = {{ ansible_default_ipv4.address }}.

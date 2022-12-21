@@ -1,0 +1,7 @@
+# Change hosts when needed.
+- name: Secures SSH. 
+  hosts: ubuntuservers
+  become: true
+
+  roles:
+    - ssh-secure

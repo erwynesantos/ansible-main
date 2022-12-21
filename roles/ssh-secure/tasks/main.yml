@@ -1,0 +1,25 @@
+---
+- name: Backup SSH config file.
+  copy:
+    src: /etc/ssh/sshd_config
+    remote_src: yes
+    dest: /etc/ssh/sshd_config.bak
+    owner: root
+    group: root
+    mode: '0644'
+    backup: yes
+    
+- name: Verify and Secures SSH.
+  lineinfile:
+    dest: /etc/ssh/sshd_config
+    regexp: "{{ item.regexp }}"
+    line: "{{ item.line }}"
+    state: present
+  with_items:
+    - regexp: "^PasswordAuthentication"
+      line: "PasswordAuthentication no"
+    - regexp: "^PermitRootLogin"
+      line: "PermitRootLogin no"
+  notify: 
+    - Print message
+    - Restart SSH
