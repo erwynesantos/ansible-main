@@ -1,14 +1,17 @@
-## git clone https://erwynesantos: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@github.com/erwynesantos/erwynesantos.com.git
+# Cloning a private repo.
 ---
 - name: Cloning Git Repo
   hosts: ubuntuserver2
   become: true
 
+  vars_files:
+    - vault-pass.yml
+
   vars:
-    git_url: "https://erwynesantos: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@github.com/erwynesantos/erwynesantos.com.git"
+    git_url: "https://erwynesantos:{{ github_token }}@github.com/erwynesantos/erwynesantos.com.git"
 
   tasks:
     - name: Clone
       git:
        repo: "{{ git_url }}"
-       dest: /var/www/erwynesantos/
+       dest: /var/www/erwynesantos.com/
