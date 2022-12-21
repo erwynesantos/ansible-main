@@ -1,0 +1,12 @@
+# https://erwynesantos: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@github.com/erwynesantos/erwynesantos.com.git
+
+---
+- name: Test to display content of vars_files.
+  hosts: ubuntuservers
+  vars_files:
+  - vault-pass.yml
+
+  tasks:
+    - name: Displaying {{ github_token}} inside vault-pass.yml
+      debug:
+       msg: "{{ github_token }}"
