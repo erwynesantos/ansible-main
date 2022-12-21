@@ -1,7 +1,7 @@
 ---
-- hosts: ubuntuservers
+- hosts: erwynesantos.com
   become: true
   tasks:
   - name: Change Timezone.
-    shell: timedatectl set-timezone "America/New_York"
+    shell: timedatectl set-timezone "Asia/Manila"
      # executable: /bin/bash
