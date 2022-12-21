@@ -1,0 +1,14 @@
+## git clone https://erwynesantos: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@github.com/erwynesantos/erwynesantos.com.git
+---
+- name: Cloning Git Repo
+  hosts: ubuntuserver2
+  become: true
+
+  vars:
+    git_url: "https://erwynesantos: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@github.com/erwynesantos/erwynesantos.com.git"
+
+  tasks:
+    - name: Clone
+      git:
+       repo: "{{ git_url }}"
+       dest: /var/www/erwynesantos/
