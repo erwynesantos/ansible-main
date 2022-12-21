@@ -50,3 +50,5 @@ ubuntuserver2 ansible_host=192.168.1.14
 
 [webservers]
 erwynesantos.com ansible_host=52.221.214.246
+
+ansible_ssh_extra_args='-o StrictHostKeyChecking=no'
