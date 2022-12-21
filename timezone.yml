@@ -1,0 +1,7 @@
+---
+- hosts: ubuntuservers
+  become: true
+  tasks:
+  - name: Change Timezone.
+    shell: timedatectl set-timezone "America/New_York"
+     # executable: /bin/bash
