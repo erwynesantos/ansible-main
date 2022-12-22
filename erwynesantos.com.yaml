@@ -20,6 +20,7 @@
        #repo: "{{ git_url }}"
        repo: https://erwynesantos:{{ github_token }}@github.com/erwynesantos/erwynesantos.com.git
        dest: "{{ git_dest }}"
+       notify: Restart Apache
 
     - name: Copy web conf to respective Apache directory.
       copy:
