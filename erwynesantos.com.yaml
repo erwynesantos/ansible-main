@@ -15,7 +15,7 @@
     centos_web_conf: "/etc/httpd/conf.d/erwynesantos.com.conf"
     
   tasks:
-    - name: Cloning {{ git_repo }}
+    - name: Cloning {{ git_repo }} to {{ git_dest }}
       git:
        #repo: "{{ git_url }}"
        repo: https://erwynesantos:{{ github_token }}@github.com/erwynesantos/erwynesantos.com.git
