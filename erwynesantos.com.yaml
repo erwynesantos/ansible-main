@@ -1,6 +1,6 @@
 ---
 - name: Update erwynesantos.com.
-  hosts: erwynesantos.com
+  hosts: localhost
   become: true
 
   vars_files:
