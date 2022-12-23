@@ -1,0 +1,27 @@
+---
+- name: Install python3 and robot framework libraries.
+  hosts: <>
+  become: true
+  
+  pre_tasks:
+  - name: Update apt cache if required.
+    apt:
+     update_cache: yes
+     cache_valid_time: 3600
+
+  tasks:
+  - name: install python3
+    apt: 
+     update_cache: yes
+     name: python3
+     state: latest
+     
+  - name: Pip install robot framework libraries.
+    pip:
+     name: "{{ item }}"
+    loop: 
+     - robotframework
+     - robotframework-pabot
+     - robotframework-databaselibrary
+     - PyMySQL
+     - robotframework-seleniumlibrary
