@@ -1,0 +1,5 @@
+---
+- name: Install Diodon Clipboard Manager
+  package: 
+    name: diodon
+    state: latest
