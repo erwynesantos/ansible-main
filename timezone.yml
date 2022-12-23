@@ -1,7 +1,10 @@
 ---
-- hosts: erwynesantos.com
+- hosts: localhost
   become: true
+
+  vars:
+    region: America/New_York
   tasks:
   - name: Change Timezone.
-    shell: timedatectl set-timezone "Asia/Manila"
+    shell: timedatectl set-timezone {{ region }}
      # executable: /bin/bash
