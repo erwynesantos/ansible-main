@@ -1,0 +1,46 @@
+# 
+# Warning: Please note that Adobe no longer supports Acrobat Reader for Linux.
+#          The latest native Linux version is 9.5.5 dated from 26/04/2013. 
+#          From this reason you should refrain using/installing Adobe Acrobat Reader to avoid potential vulnerabilities and hacker exploits.
+#          You are recommended to consider installation of Adobe Acrobat Reader on Wine.
+# Reference: https://linuxconfig.org/how-to-install-adobe-acrobat-reader-on-ubuntu-22-04-jammy-jellyfish-linux
+#
+
+---
+- name: Install Adobe Reader
+  hosts: localhost
+  become: true
+
+  pre_tasks: 
+  - name: Install prerequisites for Ansible to install .deb via apt module.
+    apt: 
+     name: 
+      - xz-utils
+      
+  tasks:
+  - name: Install prerequisites for Adobe Reader.
+    apt:
+     name:
+      - libxml2:i386
+      - libcanberra-gtk-module:i386 
+      - gtk2-engines-murrine:i386 
+      - libatk-adaptor:i386
+      - libgdk-pixbuf-xlib-2.0-0:i386
+ 
+  - name: Download Adobe Reader .deb package.
+    get_url:
+      #url: ftp://ftp.adobe.com/pub/adobe/reader/unix/9.x/9.5.5/enu/AdbeRdr9.5.5-1_i386linux_enu.deb # Official legacy ftp link.
+      url: https://ubuntu-packages-erwyne.s3.ap-southeast-1.amazonaws.com/AdbeRdr9.5.5-1_i386linux_enu.deb
+      dest: /tmp/AdbeRdr9.5.5-1_i386linux_enu.deb
+
+  - name: Install Adobe Reader
+    apt:
+     #deb: /home/ej/Downloads/AdbeRdr9.5.5-1_i386linux_enu.deb
+     deb: /tmp/AdbeRdr9.5.5-1_i386linux_enu.deb
+     #deb: /tmp/AdbeRdr9.5.5-1_i386linux_enu.deb
+
+  post_tasks:
+  - name: Cleanup downloads.
+    file:
+     path: /tmp/AdbeRdr9.5.5-1_i386linux_enu.deb
+     state: absent
