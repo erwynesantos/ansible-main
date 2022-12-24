@@ -1,3 +1,11 @@
+###############################################################################################
+#                                         Legend                                              #
+# direct_dl - The direct url from the manufacturer's website. To be used whenever possible.   #
+# s3_dl - The backup .deb package installer from S3.                                          #
+# package - The package name.                                                                 #
+#                                                                                             #
+# Instruction: Only modify the values to use this template.                                   #
+###############################################################################################
 ---
 direct_dl: https://code.visualstudio.com/sha/download?build=stable&os=linux-deb-x64
 s3_dl: https://ubuntu-packages-erwyne.s3.ap-southeast-1.amazonaws.com/code_1.74.2-1671533413_amd64.deb
