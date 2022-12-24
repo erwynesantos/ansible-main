@@ -23,9 +23,9 @@
  
 - name: Download Adobe Reader .deb package.
   get_url:
-    url: "{{ dl_url }}{{ filename}}"
-    dest: /tmp/{{ filename }}
+    url: "{{ dl_server }}{{ package }}"
+    dest: /tmp/{{ package }}
 
-- name: Run post-task.
+- name: Run post_task.
   import_tasks:
-    file: pre_task.yml
+    file: post_task.yml

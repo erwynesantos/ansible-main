@@ -1,0 +1,13 @@
+---
+- name: Run pre-task.
+  import_tasks:
+    file: pre_task.yml
+
+- name: "Download package from: {{ direct_dl }}."
+  get_url:
+    url: "{{ direct_dl }}"
+    dest: /tmp/{{ package }}
+  
+- name: Run post_task.
+  import_tasks:
+    file: post_task.yml

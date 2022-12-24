@@ -11,8 +11,9 @@
 
   roles:
    - install-diodonclipboard
-   - install-sublimetext
    - install-vim
    - ubuntu-install-adobereader
    - ubuntu-install-git
    - ubuntu-install-python
+   - ubuntu-install-sublimetext
+   - ubuntu-install-vscode

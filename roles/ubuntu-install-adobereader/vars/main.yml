@@ -1,4 +1,4 @@
 ---
 # vars file for ubuntu-install-adobereader
 dl_server: https://ubuntu-packages-erwyne.s3.ap-southeast-1.amazonaws.com/
-filename: AdbeRdr9.5.5-1_i386linux_enu.deb
+package: AdbeRdr9.5.5-1_i386linux_enu.deb

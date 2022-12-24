@@ -1,0 +1,4 @@
+---
+direct_dl: https://code.visualstudio.com/sha/download?build=stable&os=linux-deb-x64
+s3_dl: https://ubuntu-packages-erwyne.s3.ap-southeast-1.amazonaws.com/code_1.74.2-1671533413_amd64.deb
+package: vscode_amd64.deb

@@ -1,9 +1,16 @@
----
-- name: Run pre_task.
-  import_tasks:
-    file: pre_task.yml
+- name: Install GPG key.
+  shell:
+    cmd: wget -qO - {{ gpg_key }} | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/sublimehq-archive.gpg > /dev/null
 
-- name: Install Sublime Text.
-  package: 
+- name: Selecting the stable channel.
+  shell:
+    cmd: echo "deb {{ stable_channel }}" | sudo tee /etc/apt/sources.list.d/sublime-text.list
+
+- name: Manually updating the apt cache.
+  shell:
+    cmd: sudo apt-get update
+
+- name: Installing Sublime Text.
+  apt:
     name: sublime-text
     state: latest
