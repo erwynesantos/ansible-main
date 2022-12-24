@@ -1,5 +1,5 @@
 ---
-- name: Cleanup downloaded file - /tmp/{{ filename }}
+- name: Cleanup downloaded file - /tmp/{{ package }}
   file:
     path: /tmp/{{ package }}
     state: absent
