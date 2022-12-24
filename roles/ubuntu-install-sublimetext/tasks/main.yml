@@ -1,3 +1,4 @@
+---
 - name: Install GPG key.
   shell:
     cmd: wget -qO - {{ gpg_key }} | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/sublimehq-archive.gpg > /dev/null
@@ -14,3 +15,39 @@
   apt:
     name: sublime-text
     state: latest
+
+# A task to make config for sublime. This is unfinished.
+#- name: Creating configs for Sublime Text.
+#  file:
+#    path: "/home/{{ user }}/.config/sublime-text/Packages/User/Default Dark.sublime-color-scheme"
+#
+#
+#- name: Creating a file with content
+#  lineinfile:
+#    dest: "/home/{{ user }}/.config/sublime-text/Packages/User/Default Dark.sublime-color-scheme"
+#    regexp: "{{ item.regexp }}"
+#    line: "{{ item.line }}"
+#    state: present
+#  with_items:
+#    - regexp: "^:"
+#      line: ' "name": "Comment","scope": "comment","foreground": "var(yellow5)","font_style": "italic"'
+#
+# cat /home/ej/.config/sublime-text/Packages/User/Monokai.sublime-color-scheme
+# // Documentation at https://www.sublimetext.com/docs/color_schemes.html
+# {
+#         "variables":
+#         {
+#         },
+#         "globals":
+#         {
+#         },
+#         "rules":
+#         [
+#                 {
+#                         "name": "Comment",
+#                         "scope": "comment",
+#                         "foreground": "var(yellow5)",
+#                         "font_style": "italic"
+#                 }
+#         ]
+# }
