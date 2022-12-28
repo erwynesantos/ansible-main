@@ -22,7 +22,7 @@
        dest: "{{ git_dest }}"
       notify: Restart Apache
 
-    - name: Copy web conf to respective Apache directory.
+    - name: Copy web .conf to respective Apache directory.
       copy:
         src: "{{ web_conf_src }}"
         remote_src: yes
