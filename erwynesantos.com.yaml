@@ -15,6 +15,12 @@
     centos_web_conf: "/etc/httpd/conf.d/erwynesantos.com.conf"
     
   tasks:
+
+    - name: Remove old {{ git_dest }}
+      copy:
+        path: "{{ git_dest }}"
+        state: absent
+
     - name: Cloning {{ git_repo }} to {{ git_dest }}
       git:
        #repo: "{{ git_url }}"
