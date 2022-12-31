@@ -17,8 +17,8 @@
   tasks:
 
     - name: Remove old {{ git_dest }}
-      copy:
-        src: "{{ git_dest }}"index.html
+      file:
+        path: "{{ git_dest }}"
         state: absent
 
     - name: Cloning {{ git_repo }} to {{ git_dest }}
