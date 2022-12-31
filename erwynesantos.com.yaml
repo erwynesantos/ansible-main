@@ -18,7 +18,7 @@
 
     - name: Remove old {{ git_dest }}
       copy:
-        path: "{{ git_dest }}"
+        src: "{{ git_dest }}"index.html
         state: absent
 
     - name: Cloning {{ git_repo }} to {{ git_dest }}
